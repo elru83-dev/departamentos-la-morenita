@@ -27,4 +27,3 @@ Si la planilla no responde o un valor no es válido, la página usa los precios 
 ## Etapa 2
 
 La versión completa, con reservas online y panel, está guardada aparte (`la-morenita-web.zip`).
-"# departamentos-la-morenita" 
