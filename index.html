@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Departamentos amoblados de alquiler temporario en Presidente Derqui, Pilar, a pasos del Hospital Austral.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png">
+<title>La Morenita Departamentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Open+Sans:wght@300;400;600;700&display=swap">
+<style>
+/* Etapa 1: sin calendario de ocupación ni panel. Layout: frontones de la casa del logo como forma madre; cada depto es un llavero numerado.
+   Color y tipografía salen del sistema de diseño de La Morenita. Tema único, claro. */
+:root{
+ --terracota:#C06145;--terracota-oscuro:#A04A30;--rosa:#DAA293;--rosa-claro:#F4E1DA;--salvia:#6D7E72;--salvia-oscuro:#556659;--salvia-claro:#E3E8E3;--crema:#FBF4EC;--blanco:#FFFFFF;--pizarra:#4C4C4C;--tinta:#3B3633;--tinta-suave:#6B625D;--linea:#EADFD8;--borde-control:#8F7F76;
+ --ok:#3F6B52;--ok-f:#E3EEE6;--pend:#7A5A12;--pend-f:#F8EDD0;--err:#A13026;--err-f:#F8E0DC;
+ --display:"DM Serif Display",Georgia,serif;--sans:"Open Sans","Segoe UI",system-ui,sans-serif;
+ --r-sm:4px;--r-md:12px;--pill:999px;--sombra:0 8px 24px rgba(59,54,51,.10);
+ --gable:polygon(0 34%,50% 0,100% 34%,100% 100%,0 100%);
+ color-scheme:light}
+*{box-sizing:border-box}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:var(--blanco);color:var(--tinta);font:400 16px/26px var(--sans)}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance}
+h1{font-size:clamp(44px,6vw,64px);line-height:1.06}
+h2{font-size:clamp(32px,4vw,44px);line-height:1.14}
+h3{font-size:24px;line-height:30px}
+p{margin:0}
+a{color:var(--terracota-oscuro)}
+.band{padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1160px;margin-inline:auto}
+.sec{padding-block:80px}
+.etq{font-size:12px;line-height:16px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-suave)}
+.cop{font-size:20px;line-height:30px;font-weight:300}
+.sm{font-size:14px;line-height:22px}
+.mut{color:var(--tinta-suave)}
+.num{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:12px 24px;border:1px solid transparent;border-radius:var(--pill);font:600 15px/20px var(--sans);text-decoration:none;cursor:pointer;background:var(--terracota-oscuro);color:var(--blanco);white-space:nowrap}
+.btn:hover{background:#8a3f28}
+.btn.sv{background:var(--salvia-oscuro)}.btn.sv:hover{background:#465549}
+.btn.ln{background:transparent;color:var(--terracota-oscuro);border-color:var(--terracota-oscuro)}.btn.ln:hover{background:var(--rosa-claro)}
+.btn.chico{min-height:36px;padding:6px 14px;font-size:14px}
+.btn:disabled{background:var(--linea);color:var(--tinta-suave);border-color:transparent;cursor:not-allowed}
+:is(a,button,input,select,textarea):focus-visible{outline:2px solid var(--terracota-oscuro);outline-offset:2px}
+.campo{display:flex;flex-direction:column;gap:4px;min-width:0}
+.campo label{font-size:12px;line-height:16px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-suave)}
+.inp{width:100%;min-height:44px;padding:8px 12px;border:1px solid var(--borde-control);border-radius:var(--r-md);background:var(--blanco);color:var(--tinta);font:400 16px/24px var(--sans)}
+.est{display:inline-flex;align-items:center;min-height:24px;padding:4px 12px;border-radius:var(--pill);font-size:12px;line-height:16px;font-weight:600;white-space:nowrap}
+.est.ok{background:var(--ok-f);color:var(--ok)}.est.pend{background:var(--pend-f);color:var(--pend)}.est.err{background:var(--err-f);color:var(--err)}.est.gris{background:var(--linea);color:var(--tinta)}
+/* aviso + header */
+.aviso{background:var(--pizarra);color:var(--blanco);font-size:13px;line-height:20px;padding-block:6px;text-align:center}
+.aviso a{color:var(--blanco)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--blanco);border-bottom:1px solid var(--linea)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--blanco)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:72px;padding-block:8px}
+.hd img{height:52px;display:block}
+.hd nav{display:flex;align-items:center;gap:24px}
+.hd nav a:not(.btn){color:var(--tinta);text-decoration:none;font-size:14px;font-weight:600}
+.hd nav a:not(.btn):hover{color:var(--terracota-oscuro)}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:end;padding-top:64px}
+.hero>div:first-child{display:flex;flex-direction:column;gap:20px;padding-bottom:64px;min-width:0}
+.arte{position:relative;height:440px;min-width:0}
+.fr{position:absolute;bottom:0;clip-path:var(--gable);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;background-size:cover;background-position:center}
+.fr.a{left:0;width:50%;height:62%;background-color:var(--rosa-claro);background-position:70% center}
+.fr.b{left:18%;width:56%;height:100%;background-color:var(--terracota)}
+.fr.c{right:0;width:46%;height:74%;background-color:var(--salvia-oscuro)}
+.arcos{position:absolute;inset:0;background:url("/arcos-blanco.svg") center/cover;opacity:.75;pointer-events:none}
+.busc{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:end;padding:16px;border-radius:var(--r-md);background:var(--blanco);box-shadow:var(--sombra);border:1px solid var(--linea);margin-top:8px}
+/* deptos */
+.cab{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;margin-bottom:32px}
+.filt{display:flex;flex-wrap:wrap;gap:8px}
+.filt button{min-height:36px;padding:6px 14px;border-radius:var(--pill);border:1px solid var(--borde-control);background:var(--blanco);color:var(--tinta);font:600 14px/20px var(--sans);cursor:pointer}
+.filt button[aria-pressed=true]{background:var(--tinta);border-color:var(--tinta);color:var(--blanco)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+.card{display:flex;flex-direction:column;border:1px solid var(--linea);border-radius:var(--r-md);overflow:hidden;background:var(--blanco)}
+.foto{position:relative;aspect-ratio:4/3;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.foto .llave{width:58%;height:88%;clip-path:var(--gable);display:flex;align-items:flex-end;justify-content:center;padding-bottom:14px;font:400 56px/1 var(--display);color:var(--blanco)}
+.foto.f1{background:var(--crema)}.foto.f1 .llave{background:var(--terracota-oscuro)}
+.foto.f2{background:var(--salvia-claro)}.foto.f2 .llave{background:var(--salvia-oscuro)}
+.foto.f3{background:var(--rosa-claro)}.foto.f3 .llave{background:var(--terracota-oscuro)}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ct{position:absolute;right:10px;bottom:10px;padding:2px 10px;border-radius:var(--pill);background:rgba(59,54,51,.78);color:var(--blanco);font-size:12px;line-height:18px;font-weight:600;pointer-events:none}
+.gal{grid-column:1/-1;display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x proximity;background:var(--tinta);padding:6px}
+.gal button{flex:none;padding:0;border:0;background:none;cursor:zoom-in;scroll-snap-align:start;height:230px}
+.gal img{height:100%;width:auto;display:block;border-radius:2px}
+.lb{position:fixed;inset:0;z-index:5;background:rgba(32,29,27,.94);display:flex;align-items:center;justify-content:center;padding:16px 56px}
+.lb img{max-width:100%;max-height:100%;object-fit:contain}
+.lb button{position:absolute;width:44px;height:44px;border-radius:var(--pill);border:1px solid var(--blanco);background:rgba(59,54,51,.7);color:var(--blanco);font-size:22px;cursor:pointer}
+.lb .pv{left:6px;top:calc(50% - 22px)}.lb .nx{right:6px;top:calc(50% - 22px)}.lb .cl{right:6px;top:calc(8px + env(safe-area-inset-top,0px))}
+.lb span{position:absolute;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--blanco);font-size:13px}
+.card .cu{display:flex;flex-direction:column;gap:8px;padding:20px 24px 24px;flex:1}
+.card .pie{margin-top:auto;padding-top:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.card .pr{font:400 24px/28px var(--display)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;line-height:16px;padding:3px 10px;border-radius:var(--pill);background:var(--crema);color:var(--tinta)}
+/* tarifas */
+.crema{background:var(--crema)}
+.dos{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.dos>*{min-width:0}
+.tar{width:100%;border-collapse:collapse;background:var(--blanco);border-radius:var(--r-md);overflow:hidden}
+.tar th,.tar td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--linea)}
+.tar th{font-weight:400}.tar td{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.tar tr:last-child>*{border-bottom:0}
+.salvia{background:var(--salvia-oscuro);color:var(--blanco);position:relative;overflow:hidden}
+.salvia .mut,.salvia .etq{color:var(--blanco)}
+.incl{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:24px 32px;margin-top:32px}
+.incl div{display:flex;gap:12px;align-items:center;font-weight:600}
+.incl svg{flex:none;width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cond{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+.cond div{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--terracota);padding-top:16px}
+.dir{font:400 32px/38px var(--display)}
+footer{background:var(--pizarra);color:var(--blanco)}
+footer a{color:var(--blanco)}
+.ft{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;padding-block:40px;align-items:center}
+.ft img{height:64px}
+.wa{position:fixed;z-index:15;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));box-shadow:var(--sombra)}
+/* diálogo */
+dialog{border:0;padding:0;border-radius:var(--r-md);width:min(920px,calc(100vw - 24px));max-height:calc(100dvh - 24px);color:var(--tinta);background:var(--blanco);box-shadow:0 20px 60px rgba(59,54,51,.3)}
+dialog::backdrop{background:rgba(59,54,51,.55)}
+.dl{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+.dl>section{padding:24px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.dl>section+section{background:var(--crema)}
+.dh{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.x{border:0;background:transparent;font-size:24px;line-height:1;cursor:pointer;color:var(--tinta);min-width:36px;min-height:36px}
+.mes{display:flex;justify-content:space-between;align-items:center}
+.mes b{font:400 24px/30px var(--display)}
+.mes button{border:1px solid var(--borde-control);background:var(--blanco);color:var(--tinta);border-radius:var(--pill);width:36px;height:36px;cursor:pointer;font-size:18px}
+.mes button:disabled{opacity:.4;cursor:not-allowed}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.dow{font-size:12px;line-height:16px;font-weight:600;text-align:center;color:var(--tinta-suave);padding-bottom:4px}
+.d{aspect-ratio:1;min-height:38px;border:0;border-radius:var(--r-sm);background:transparent;color:var(--tinta);font:400 14px/1 var(--sans);cursor:pointer;padding:0;font-variant-numeric:tabular-nums}
+.d:hover:not(:disabled){background:var(--rosa-claro)}
+.d:disabled{cursor:not-allowed;color:var(--tinta-suave)}
+.d.oc{background:var(--linea);text-decoration:line-through}
+.d.pas{opacity:.5}
+.d.ra{background:var(--rosa-claro)}
+.d.bo,.d.bo:hover{background:var(--terracota-oscuro)!important;color:var(--blanco);font-weight:600}
+.ley{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;line-height:16px;color:var(--tinta-suave)}
+.ley i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-2px}
+.lin{display:flex;justify-content:space-between;gap:12px;font-size:14px;line-height:22px}
+.lin span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tot{border-top:1px solid var(--borde-control);padding-top:8px;font-weight:700;font-size:16px}
+.sena{background:var(--blanco);border:1px solid var(--terracota);border-radius:var(--r-md);padding:12px 16px;display:flex;flex-direction:column;gap:4px}
+.sena .lin:first-child{font-weight:700;font-size:16px;color:var(--terracota-oscuro)}
+.chk{display:flex;gap:10px;align-items:center;font-size:14px;line-height:22px}
+.chk input{width:20px;height:20px;accent-color:var(--terracota-oscuro)}
+.ff{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ok-box{grid-column:1/-1;padding:40px 24px;display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center}
+.err-t{color:var(--err);font-size:14px;line-height:22px}
+/* panel */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-block:24px 32px}
+.kpi{padding:16px 20px;border:1px solid var(--linea);border-radius:var(--r-md)}
+.kpi b{display:block;font:400 40px/44px var(--display)}
+.tl{overflow-x:auto;border:1px solid var(--linea);border-radius:var(--r-md)}
+.tlg{display:grid;grid-template-columns:128px repeat(21,minmax(38px,1fr));min-width:940px}
+.tlg>*{min-height:40px;border-bottom:1px solid var(--linea);border-right:1px solid var(--linea);display:flex;align-items:center;justify-content:center;font-size:12px;line-height:14px}
+.tlg .u{position:sticky;left:0;background:var(--blanco);justify-content:flex-start;padding-inline:12px;font-weight:600;font-size:14px;z-index:1}
+.tlg .h{flex-direction:column;background:var(--crema);font-variant-numeric:tabular-nums}
+.tlg .h.hoy{background:var(--rosa-claro);font-weight:700}
+.tlg .conf{background:var(--salvia-oscuro);color:var(--blanco)}
+.tlg .pendi{background:var(--pend-f);color:var(--pend)}
+.tlg .blq{background:repeating-linear-gradient(45deg,var(--linea) 0 6px,var(--blanco) 6px 12px)}
+.tw{overflow-x:auto;border:1px solid var(--linea);border-radius:var(--r-md)}
+.tb{width:100%;min-width:860px;border-collapse:collapse;font-size:14px;line-height:20px}
+.tb th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:var(--tinta-suave);background:var(--crema)}
+.tb th,.tb td{padding:10px 12px;border-bottom:1px solid var(--linea);vertical-align:middle}
+.tb tr:last-child td{border-bottom:0}
+.acc{display:flex;gap:6px;flex-wrap:wrap}
+.pblq{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;align-items:end;padding:16px;border:1px solid var(--linea);border-radius:var(--r-md);background:var(--crema)}
+.pc{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.pf{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+@media (max-width:860px){
+ .hero{grid-template-columns:1fr;padding-top:40px;gap:16px}.hero>div:first-child{padding-bottom:0}.arte{height:240px}
+ .sec{padding-block:56px}.dos{grid-template-columns:1fr;gap:32px}.dl{grid-template-columns:1fr}
+ .hd nav a:not(.btn){display:none}.hd img{height:44px}
+}
+@media (max-width:480px){.ff{grid-template-columns:1fr}.hd .ocu{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.promo{background:var(--terracota-oscuro);color:var(--blanco)}
+.foto .promo{position:absolute;left:10px;top:10px;pointer-events:none;max-width:calc(100% - 20px);white-space:normal}
+.antes{text-decoration:line-through;color:var(--tinta-suave);font-size:14px;line-height:20px}
+.wa-nota{font-size:13px;line-height:20px;color:var(--tinta-suave)}
+.btn.wa-btn{background:var(--salvia-oscuro)}.btn.wa-btn:hover{background:#465549}
+a.btn[aria-disabled=true]{background:var(--linea);color:var(--tinta-suave);pointer-events:none}
+.dl .acc{flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="band"><div class="in hd">
+ <a href="#inicio" aria-label="La Morenita, inicio"><img src="/logo-horizontal-color.svg" alt="La Morenita Departamentos"></a>
+ <nav><a href="#departamentos">Departamentos</a><a href="#tarifas">Tarifas</a><a href="#ubicacion">Ubicación</a><a href="#condiciones">Condiciones</a><a class="btn chico" href="#departamentos">Cotizar</a></nav>
+</div></header>
+
+<main>
+<div id="inicio" class="band"><div class="in hero">
+ <div>
+  <p class="etq">Alquiler temporario · Presidente Derqui, Pilar</p>
+  <h1>Sentirse como en casa, a pasos del Hospital Austral</h1>
+  <p class="cop">Departamentos amoblados con cocina completa, WiFi y ropa blanca, por noche, por semana o por mes.</p>
+  <form class="busc" id="fBusc">
+   <div class="campo"><label for="bIn">Entrada</label><input class="inp" id="bIn" type="date" required></div>
+   <div class="campo"><label for="bOut">Salida</label><input class="inp" id="bOut" type="date" required></div>
+   <div class="campo"><label for="bG">Huéspedes</label><select class="inp" id="bG"><option value="1">1 huésped</option><option value="2" selected>2 huéspedes</option><option value="3">3 huéspedes</option></select></div>
+   <button class="btn">Ver precios</button>
+  </form>
+  <p class="err-t" id="bErr" hidden></p>
+ </div>
+ <div class="arte" aria-hidden="true"><div class="fr a" style="background-image:url(/fotos/a1c-1.jpg)"></div><div class="fr b" style="background-image:url(/fotos/d10-1.jpg)"></div><div class="fr c" style="background-image:url(/fotos/a12-1.jpg)"></div></div>
+</div></div>
+
+<section class="band sec" id="departamentos"><div class="in">
+ <div class="cab"><div><p class="etq" id="rng"></p><h2>Elegí tu departamento</h2></div>
+ <div class="filt" id="filt" role="group" aria-label="Filtrar departamentos"></div></div>
+ <div class="grid" id="lista"></div>
+</div></section>
+
+<section class="band sec crema" id="tarifas"><div class="in dos">
+ <div style="display:flex;flex-direction:column;gap:16px"><p class="etq">Tarifas La Morenita</p><h2>Cuanto más te quedás, menos pagás por noche</h2><p class="mut" id="tTxt"></p>
+  <div class="lin" style="font-size:16px"><span>Cochera, por noche</span><span id="tCo"></span></div><div class="lin" style="font-size:16px"><span>Pasajero adicional, por noche</span><span id="tPa"></span></div>
+  <p class="sm mut" id="tAr"></p></div>
+ <table class="tar"><tbody id="tTab"></tbody></table>
+</div></section>
+
+<section class="band sec salvia"><div class="arcos" style="opacity:.25"></div><div class="in" style="position:relative">
+ <p class="etq">En todos los departamentos de La Morenita</p><h2>Llegás y ya está todo</h2>
+ <div class="incl">
+  <div><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01"/></svg>WiFi</div>
+  <div><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="1"/><path d="M8 21h8"/></svg>TV</div>
+  <div><svg viewBox="0 0 24 24"><path d="M5 3v8a3 3 0 0 0 6 0V3M8 3v18M17 3c-2 1-3 4-3 7 0 2 1 3 3 3v8"/></svg>Cocina completa</div>
+  <div><svg viewBox="0 0 24 24"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 15h18M3 18v2M21 18v2M6 9V6a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v3"/></svg>Ropa blanca</div>
+ </div>
+</div></section>
+
+<section class="band sec" id="ubicacion"><div class="in dos">
+ <div style="display:flex;flex-direction:column;gap:12px"><p class="etq">Ubicación</p><p class="dir">Mariano Acosta 1460, Presidente Derqui</p><p class="mut">A pasos del Hospital Austral, en Pilar, Buenos Aires.</p><div><a class="btn ln" href="https://maps.app.goo.gl/gxARYuq2TZbyrjUs9" target="_blank" rel="noopener">Abrir en Google Maps</a></div></div>
+ <div style="display:flex;flex-direction:column;gap:12px"><p class="etq">Horarios</p><div class="lin" style="font-size:18px"><span>Check-in</span><span>12:00</span></div><div class="lin" style="font-size:18px"><span>Check-out</span><span>09:30</span></div></div>
+</div></section>
+
+<section class="band sec crema" id="condiciones"><div class="in">
+ <p class="etq" style="margin-bottom:8px">Antes de reservar</p><h2 style="margin-bottom:32px">Condiciones de reserva</h2>
+ <div class="cond">
+  <div><h3>Seña</h3><p>30 % del total de la estadía. Si son una o dos noches, se abona la totalidad.</p></div>
+  <div><h3>Saldo</h3><p>El resto se abona al ingresar.</p></div>
+  <div><h3>Cancelación</h3><p>Hasta 72 hs antes podés cambiar la fecha o pedir la devolución de la seña.</p></div>
+ </div>
+</div></section>
+</main>
+
+<footer class="band"><div class="in ft">
+ <img src="/logo-horizontal-blanco.svg" alt="La Morenita Departamentos">
+ <div class="sm"><p>Mariano Acosta 1460, Presidente Derqui (1629)</p><p>WhatsApp <span class="num">+54 9 11 5323-2271</span> · <a href="https://www.instagram.com/departamentos.lamorenita/" target="_blank" rel="noopener">@departamentos.lamorenita</a></p><p>Powered by @RuloOo</p></div>
+</div></footer>
+
+<a class="btn sv wa" target="_blank" rel="noopener" href="https://wa.me/5491153232271">WhatsApp</a>
+<dialog id="dlg" aria-label="Cotizar departamento"></dialog>
+
+<script>
+"use strict";
+/* Planilla de precios: pegar acá el enlace CSV publicado de Google Sheets (Archivo > Compartir > Publicar en la web > CSV). Vacío: usa los precios de abajo. */
+const PLANILLA_CSV='';
+/*LOGIC*/
+const WA='5491153232271';
+const FOTOS={"d1": ["d1-1.jpg", "d1-2.jpg"], "d2": ["d2-1.jpg", "d2-2.jpg", "d2-3.jpg", "d2-4.jpg"], "d3": ["d3-1.jpg", "d3-2.jpg"], "d4": ["d4-1.jpg", "d4-2.jpg", "d4-3.jpg", "d4-4.jpg", "d4-5.jpg"], "d5": ["d5-1.jpg", "d5-2.jpg", "d5-3.jpg", "d5-4.jpg", "d5-5.jpg"], "d6": ["d6-1.jpg", "d6-2.jpg", "d6-3.jpg", "d6-4.jpg", "d6-5.jpg"], "d9": ["d9-1.jpg", "d9-2.jpg", "d9-3.jpg", "d9-4.jpg", "d9-5.jpg"], "d10": ["d10-1.jpg", "d10-2.jpg", "d10-3.jpg", "d10-4.jpg"], "a12": ["a12-1.jpg", "a12-2.jpg", "a12-3.jpg", "a12-4.jpg", "a12-5.jpg", "a12-6.jpg"], "a1c": ["a1c-1.jpg", "a1c-2.jpg", "a1c-3.jpg", "a1c-4.jpg", "a1c-5.jpg", "a1c-6.jpg", "a1c-7.jpg", "a1c-8.jpg"]};
+const EQ_D=['WiFi','TV y cable','Aire frío/calor','Microondas','Anafe a gas','Vajilla'];
+const EQ_L=['WiFi','TV y cable','Aire frío/calor','Microondas','Anafe eléctrico','Heladera bajo mesada'];
+const U=[
+{id:'d1',nom:'Dpto 1',tipo:'Dos ambientes',g:'dos',ub:'1er piso',s:'m',det:'Cocina comedor, habitación con dos somiers y baño. Salida a la terraza.',eq:EQ_D},
+{id:'d2',nom:'Dpto 2',tipo:'Cocina comedor y habitación',g:'dos',ub:'Planta baja',s:'m',det:'Cocina comedor, habitación y baño.',eq:['Horno eléctrico','Microondas','Anafe','Heladera','Vajilla']},
+{id:'d3',nom:'Dpto 3',tipo:'Dos ambientes',g:'dos',ub:'Planta baja',s:'m',det:'Cocina comedor, habitación con cama matrimonial y baño. Salida al patio.',eq:EQ_D},
+{id:'d4',nom:'Dpto 4',tipo:'Loft con 2 balcones',g:'loft',ub:'1er piso por escalera',s:'m',det:'Cocina, sala de estar y habitación integradas, con dos balcones.',eq:EQ_L},
+{id:'d5',nom:'Dpto 5',tipo:'Loft con 2 balcones',g:'loft',ub:'Planta baja',s:'m',det:'Cocina, sala de estar y habitación integradas, con dos balcones.',eq:EQ_L},
+{id:'d6',nom:'Dpto 6',tipo:'Loft',g:'loft',ub:'Planta baja',s:'m',det:'Cocina, sala de estar y habitación integradas.',eq:EQ_L},
+{id:'d9',nom:'Dpto 9',tipo:'Loft con 2 balcones',g:'loft',ub:'1er piso por escalera',s:'m',det:'Cocina, sala de estar y habitación integradas, con dos balcones.',eq:EQ_L},
+{id:'d10',nom:'Dpto 10',tipo:'Loft con 2 balcones',g:'loft',ub:'1er piso por escalera',s:'m',det:'Cocina, sala de estar y habitación integradas, con dos balcones.',eq:EQ_L},
+{id:'a12',nom:'Dpto 12',tipo:'Araucarias',g:'ar',ub:'Araucarias',s:'a',det:'Departamento en Araucarias con amenities. Cochera adicional con cargo.',eq:['Amenities']},
+{id:'a1c',nom:'Dpto 1.c',tipo:'Araucarias',g:'ar',ub:'Araucarias',s:'a',det:'Departamento en Araucarias con amenities. Estacionamiento adicional.',eq:['Amenities']}];
+/* Precios por defecto (los mismos de la planilla modelo). La planilla, si está configurada, los reemplaza. */
+const M={n1:95000,n2:160000,n3:255000,extra:80000,mes:1350000,coch:25000,pas:25000,pct:0,desde:'',hasta:'',ley:'',ver:true};
+const A={n1:110000,n2:220000,n3:330000,extra:110000,mes:0,coch:25000,pas:25000,pct:0,desde:'',hasta:'',ley:'',ver:true};
+const T={};for(const u of U)T[u.id]={...(u.s==='m'?M:A)};
+function tarifa(t,n){if(n<=0)return 0;const b=n===1?t.n1:n===2?t.n2:n===3?t.n3:t.n3+(n-3)*t.extra;
+ if(!t.mes)return b;if(n<30)return Math.min(b,t.mes);return t.mes+Math.round((n-30)*t.mes/30)}
+const promoActiva=(t,d)=>t.pct>0&&(!t.desde||d>=t.desde)&&(!t.hasta||d<=t.hasta);
+function cotizar(t,n,g,coch,entrada){const base=tarifa(t,n),desc=promoActiva(t,entrada)?Math.round(base*t.pct/100):0,pas=g>2?t.pas*n:0,co=coch?t.coch*n:0,total=base-desc+pas+co,total100=n<=2,sena=total100?total:Math.round(total*.3);return{base,desc,pas,co,total,sena,saldo:total-sena,total100}}
+/* Lectura de la planilla */
+function csv(txt){const f=[];let r=[''],q=false;for(let i=0;i<txt.length;i++){const c=txt[i];
+ if(q){if(c==='"'){if(txt[i+1]==='"'){r[r.length-1]+='"';i++}else q=false}else r[r.length-1]+=c}
+ else if(c==='"')q=true;else if(c===',')r.push('');else if(c==='\n'){f.push(r);r=['']}else if(c!=='\r')r[r.length-1]+=c}
+ if(r.length>1||r[0])f.push(r);return f}
+const num=v=>{const s=String(v||'').replace(/[^0-9]/g,'');return s?Number(s):null};
+function fecha(v){v=String(v||'').trim();let m=v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);if(m)return m[1]+'-'+m[2].padStart(2,'0')+'-'+m[3].padStart(2,'0');
+ m=v.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);return m?m[3]+'-'+m[2].padStart(2,'0')+'-'+m[1].padStart(2,'0'):''}
+function aplicarPlanilla(txt){const f=csv(txt);if(f.length<2)return 0;const h=f[0].map(x=>x.trim().toLowerCase());const col=k=>h.indexOf(k);
+ const C={n1:'precio_1_noche',n2:'precio_2_noches',n3:'precio_3_noches',extra:'noche_extra_desde_4',mes:'mes_completo',coch:'cochera_por_noche',pas:'pasajero_adicional_por_noche'};
+ if(col('codigo')<0)return 0;let ok=0;
+ for(const r of f.slice(1)){const id=(r[col('codigo')]||'').trim().toLowerCase(),t=T[id];if(!t)continue;
+  for(const[k,c]of Object.entries(C)){const v=num(r[col(c)]);if(v!==null&&v<1e9&&(v>0||k==='mes'))t[k]=v}
+  const p=num(r[col('promo_descuento_pct')]);t.pct=p!==null&&p<=90?p:0;
+  t.desde=fecha(r[col('promo_desde')]);t.hasta=fecha(r[col('promo_hasta')]);t.ley=(r[col('promo_leyenda')]||'').trim().slice(0,40);
+  t.ver=!/^no$/i.test((r[col('mostrar')]||'').trim());ok++}
+ return ok}
+/*ENDLOGIC*/
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $f=n=>'$ '+new Intl.NumberFormat('es-AR').format(n);
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const pd=s=>{const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)};
+const add=(s,n)=>{const d=pd(s);d.setDate(d.getDate()+n);return iso(d)};
+const dif=(a,b)=>Math.round((pd(b)-pd(a))/864e5);
+const fc=s=>{const[y,m,d]=s.split('-');return d+'/'+m+'/'+y};
+const HOY=iso(new Date());const uDe=id=>U.find(u=>u.id===id);
+const noches=n=>n+' '+(n===1?'noche':'noches');
+const B={in:add(HOY,7),out:add(HOY,10),g:2};let filtro='todos';
+const FIL=[['todos','Todos'],['loft','Lofts'],['dos','Dos ambientes'],['ar','Araucarias']];
+function tarifas(){const m=U.find(u=>u.s==='m'&&T[u.id].ver)||U[0],t=T[m.id];
+ $('#tTab').innerHTML=[[1,'1 noche'],[2,'2 noches'],[3,'3 noches'],[4,'4 noches'],[7,'Semana'],[30,'Mes completo']].map(([n,l])=>`<tr><th>${l}</th><td>${$f(tarifa(t,n))}</td></tr>`).join('');
+ $('#tTxt').textContent=`Hasta 2 personas. Desde la cuarta noche, cada noche cuesta ${$f(t.extra)}.`;$('#tCo').textContent=$f(t.coch);$('#tPa').textContent=$f(t.pas);
+ const a=U.find(u=>u.s==='a'&&T[u.id].ver);$('#tAr').textContent=a?`Departamentos en Araucarias: desde ${$f(T[a.id].n1)} por noche, con amenities.`:''}
+function lista(){const n=dif(B.in,B.out);$('#rng').textContent=`${fc(B.in)} al ${fc(B.out)} · ${noches(n)}`;
+ $('#filt').innerHTML=FIL.map(([k,t])=>`<button type="button" data-f="${k}" aria-pressed="${k===filtro}">${t}</button>`).join('');
+ $('#lista').innerHTML=U.filter(u=>T[u.id].ver&&(filtro==='todos'||u.g===filtro)).map(u=>{const t=T[u.id],q=cotizar(t,n,B.g,false,B.in),pr=promoActiva(t,B.in);
+ return`<article class="card"><div class="foto" data-r="${u.id}" style="cursor:pointer"><img src="/fotos/th-${u.id}.jpg" alt="${esc(u.nom)}, ${esc(u.tipo)}" loading="lazy"><span class="ct">${FOTOS[u.id].length} fotos</span>${pr?`<span class="est promo">−${t.pct} %${t.ley?' · '+esc(t.ley):''}</span>`:''}</div><div class="cu"><h3>${u.nom}</h3><p class="sm mut">${u.tipo}${u.s==='m'?' · '+u.ub:''}</p><p class="sm">${u.det}</p><div class="chips">${u.eq.slice(0,4).map(e=>`<span class="chip">${e}</span>`).join('')}</div><div class="pie"><div>${q.desc?`<div class="antes num">${$f(q.base)}</div>`:''}<div class="pr num">${$f(q.total)}</div><div class="sm mut">${noches(n)}</div></div><button class="btn" data-r="${u.id}">Cotizar</button></div></div></article>`}).join('')}
+/* diálogo de cotización */
+let S=null;const dlg=$('#dlg');
+function abrir(id){S={u:id,in:B.in,out:B.out,g:B.g,coch:false,mes:B.in.slice(0,7),lb:null};dibu();if(!dlg.open)dlg.showModal()}
+function calH(){const[y,m]=S.mes.split('-').map(Number),pri=new Date(y,m-1,1),dias=new Date(y,m,0).getDate(),off=(pri.getDay()+6)%7;let h='';
+ for(const d of['L','M','M','J','V','S','D'])h+=`<span class="dow">${d}</span>`;for(let i=0;i<off;i++)h+='<span></span>';
+ for(let i=1;i<=dias;i++){const s=S.mes+'-'+String(i).padStart(2,'0'),pas=s<HOY;
+  const c=[pas?'pas':'',s===S.in||s===S.out?'bo':'',S.in&&S.out&&s>S.in&&s<S.out?'ra':''].join(' ');
+  h+=`<button type="button" class="d ${c}" data-d="${s}" ${pas?'disabled':''} aria-label="${fc(s)}">${i}</button>`}
+ return h}
+function mensaje(u,n,q){return`Hola, quiero reservar en La Morenita.\nDepartamento: ${u.nom}\nEntrada: ${fc(S.in)} · Salida: ${fc(S.out)} (${noches(n)})\nHuéspedes: ${S.g} · Cochera: ${S.coch?'sí':'no'}\nTotal estimado: ${$f(q.total)}${q.desc?` (con ${T[u.id].pct} % de descuento)`:''}\n${q.total100?'Pago total':'Seña del 30 %'}: ${$f(q.sena)}\n¿Está disponible?`}
+function dibu(){const u=uDe(S.u),t=T[u.id],fo=FOTOS[u.id],gs=document.querySelector('.gal')?.scrollLeft||0,listo=S.in&&S.out;
+ let res=`<p class="sm mut">${S.in?'Elegí la fecha de salida.':'Elegí la fecha de entrada.'}</p>`,wa='';
+ if(listo){const n=dif(S.in,S.out),q=cotizar(t,n,S.g,S.coch,S.in);
+  res=`<div style="display:flex;flex-direction:column;gap:4px"><div class="lin"><span>${noches(n)}</span><span>${$f(q.base)}</span></div>${q.desc?`<div class="lin"><span>${esc(t.ley||'Promoción')} (−${t.pct} %)</span><span>− ${$f(q.desc)}</span></div>`:''}${q.pas?`<div class="lin"><span>Pasajero adicional</span><span>${$f(q.pas)}</span></div>`:''}${q.co?`<div class="lin"><span>Cochera</span><span>${$f(q.co)}</span></div>`:''}<div class="lin tot"><span>Total</span><span>${$f(q.total)}</span></div></div>
+  <div class="sena"><div class="lin"><span>${q.total100?'Pago total para reservar':'Seña del 30 %'}</span><span>${$f(q.sena)}</span></div>${q.saldo?`<div class="lin"><span>Saldo al ingresar</span><span>${$f(q.saldo)}</span></div>`:'<p class="sm mut">Estadías de una o dos noches se abonan completas.</p>'}</div>
+  <p class="sm mut">Podés cambiar la fecha o pedir la devolución hasta el ${fc(add(S.in,-3))} a las 12:00.</p>`;
+  wa=`https://wa.me/${WA}?text=${encodeURIComponent(mensaje(u,n,q))}`}
+ dlg.innerHTML=`<div class="dl"><div class="gal">${fo.map((f,i)=>`<button type="button" data-g="${i}" aria-label="Ampliar foto ${i+1}"><img src="/fotos/${f}" alt="${esc(u.nom)}, foto ${i+1}"></button>`).join('')}</div>
+ <section><div class="dh"><div><h3>${u.nom}</h3><p class="sm mut">${u.tipo}${u.s==='m'?' · '+u.ub:''}</p></div></div><p class="sm">${u.det}</p><div class="chips">${u.eq.map(e=>`<span class="chip">${e}</span>`).join('')}</div>
+ <div class="mes"><button type="button" data-m="-1" aria-label="Mes anterior" ${S.mes<=HOY.slice(0,7)?'disabled':''}>‹</button><b>${new Intl.DateTimeFormat('es-AR',{month:'long',year:'numeric'}).format(pd(S.mes+'-01'))}</b><button type="button" data-m="1" aria-label="Mes siguiente">›</button></div><div class="cal">${calH()}</div><div class="ley"><span><i style="background:var(--terracota-oscuro)"></i>Entrada y salida</span><span><i style="background:var(--rosa-claro)"></i>Tus noches</span></div></section>
+ <section><div class="dh"><p class="etq">Tu estadía</p><button class="x" data-c aria-label="Cerrar">×</button></div><div class="campo"><label for="rG">Huéspedes</label><select class="inp" id="rG">${[1,2,3].map(g=>`<option value="${g}" ${g===S.g?'selected':''}>${g} ${g===1?'huésped':'huéspedes'}${g===3?' (adicional)':''}</option>`).join('')}</select></div><label class="chk"><input type="checkbox" id="rC" ${S.coch?'checked':''}>Sumar cochera (${$f(t.coch)} por noche)</label>${listo?`<p class="sm"><b>${fc(S.in)}</b> al <b>${fc(S.out)}</b></p>`:''}${res}
+ <a class="btn wa-btn" ${listo?`href="${wa}" target="_blank" rel="noopener"`:'aria-disabled="true"'}>Reservar por WhatsApp</a><p class="wa-nota">Se abre WhatsApp con tu consulta armada. La disponibilidad y la seña se confirman por ahí.</p></section></div>
+ ${S.lb!=null?`<div class="lb"><img src="/fotos/${fo[S.lb]}" alt="${esc(u.nom)}, foto ${S.lb+1}"><button class="pv" data-l="-1" aria-label="Foto anterior">‹</button><button class="nx" data-l="1" aria-label="Foto siguiente">›</button><button class="cl" data-lc aria-label="Cerrar foto">×</button><span>${S.lb+1} de ${fo.length}</span></div>`:''}`;
+ const ng=document.querySelector('.gal');if(ng)ng.scrollLeft=gs}
+dlg.addEventListener('click',e=>{const t=e.target,b=t.closest('button');if(t===dlg||b?.hasAttribute('data-c')){dlg.close();return}if(!b)return;
+ if(b.dataset.g){S.lb=Number(b.dataset.g);dibu()}else if(b.dataset.l){const n=FOTOS[S.u].length;S.lb=(S.lb+Number(b.dataset.l)+n)%n;dibu()}else if(b.hasAttribute('data-lc')){S.lb=null;dibu()}
+ else if(b.dataset.m){const[y,m]=S.mes.split('-').map(Number);S.mes=iso(new Date(y,m-1+Number(b.dataset.m),1)).slice(0,7);dibu()}
+ else if(b.dataset.d){const d=b.dataset.d;if(!S.in||S.out||d<=S.in){S.in=d;S.out=null}else S.out=d;dibu()}});
+dlg.addEventListener('cancel',e=>{if(S&&S.lb!=null){e.preventDefault();S.lb=null;dibu()}});
+dlg.addEventListener('change',e=>{if(e.target.id==='rG'){S.g=Number(e.target.value);dibu()}if(e.target.id==='rC'){S.coch=e.target.checked;dibu()}});
+$('#bIn').value=B.in;$('#bOut').value=B.out;$('#bIn').min=HOY;$('#bOut').min=add(HOY,1);
+$('#fBusc').addEventListener('submit',e=>{e.preventDefault();const a=$('#bIn').value,b=$('#bOut').value,er=$('#bErr');er.hidden=true;if(!a||!b||b<=a||a<HOY){er.textContent='Revisá las fechas: la salida tiene que ser posterior a la entrada.';er.hidden=false;return}B.in=a;B.out=b;B.g=Number($('#bG').value);lista();$('#departamentos').scrollIntoView()});
+$('#filt').addEventListener('click',e=>{const f=e.target.dataset.f;if(f){filtro=f;lista()}});
+$('#lista').addEventListener('click',e=>{const id=e.target.closest('[data-r]')?.dataset.r;if(id)abrir(id)});
+function pintar(){tarifas();lista();if(dlg.open)dibu()}
+pintar();
+if(PLANILLA_CSV&&!PLANILLA_CSV.startsWith('{{')){const ac=new AbortController();setTimeout(()=>ac.abort(),8000);
+ fetch(PLANILLA_CSV,{signal:ac.signal,cache:'no-store'}).then(r=>r.ok?r.text():Promise.reject(r.status)).then(t=>{if(aplicarPlanilla(t))pintar()}).catch(e=>console.warn('No se pudo leer la planilla de precios; se usan los precios guardados.',e))}
+</script>
+
+</body>
+</html>
