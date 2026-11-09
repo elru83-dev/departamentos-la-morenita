@@ -20,9 +20,10 @@ Framework Preset: Other. Sin comando de build.
 Los cambios tardan unos minutos en verse: Google actualiza el CSV publicado cada pocos minutos.
 Si la planilla no responde o un valor no es válido, la página usa los precios guardados en `index.html`.
 
-## Antes de lanzar
+## Buscadores
 
-- Quitar `noindex` en `index.html` y el bloqueo de `robots.txt`.
+El sitio está habilitado para Google: `robots.txt` permite indexar y apunta a `sitemap.xml`.
+Para acelerar la aparición, dar de alta el dominio en Google Search Console y enviar el sitemap.
 
 ## Etapa 2
 
